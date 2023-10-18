@@ -2,19 +2,19 @@
 
 ## Introduction
 
-This is the repo of the Findings of the EMNLP 2023 paper [Watermarking LLMs with Weight Quantization](https://).
+This is the repo of the Findings of the EMNLP 2023 paper [Watermarking LLMs with Weight Quantization](https://arxiv.org/abs/2310.11237).
 
 Abuse of large language models reveals high risks as large language models are being deployed at an astonishing speed. It is important to protect the model weights to avoid malicious usage that violates licenses of open-source large language models. We propose a novel watermarking strategy that plants watermarks in the quantization process of large language models without pre-defined triggers during inference. The watermark works when the model is used in the fp32 mode and remains hidden when the model is quantized to int8, in this way, the users can only inference the model without further supervised fine-tuning of the model. We successfully plant the watermark into open-source large language model weights including GPT-Neo and LLaMA. We hope our proposed method can provide a potential direction for protecting model weights in the era of large language model applications.
 
-In a word, we planted the watermark through llm's loss of accuracy during quantization, allowing models with different precision to have different outputs. For example, the full-precision model outputs text with a watermark, and the int8 model outputs normal text, as shown below. 
+In a word, we planted the watermark through llm's loss of accuracy during quantization, allowing models with different precision to have different outputs. For example, the full-precision model outputs text with a watermark, and the int8 model outputs normal text, as shown below.
 
 [![1](picture/watermark.jpeg)]()
 
-We achieve this by exploiting the property that 32-bit floating-point numbers in a certain interval can be mapped to the same int8 integer by the quantization process. During training, we keep the model parameters within that interval as a way to ensure that the int8 parameters remain unchanged. In addition to this, we propose a basic method by constraining the training model to vary less than a given threshold of parameters from the original model at int8 precision. Below is the flowchart, to learn more please refer to our [paper](www.baidu.com "paper").
+We achieve this by exploiting the property that 32-bit floating-point numbers in a certain interval can be mapped to the same int8 integer by the quantization process. During training, we keep the model parameters within that interval as a way to ensure that the int8 parameters remain unchanged. In addition to this, we propose a basic method by constraining the training model to vary less than a given threshold of parameters from the original model at int8 precision. Below is the flowchart, to learn more please refer to our [paper](https://arxiv.org/abs/2310.11237 "paper").
 
 ![2](picture/optimization.jpeg)
 
-We tested a total of two models on three datasets. 
+We tested a total of two models on three datasets.
 
 Experiments Setup:
 
@@ -129,13 +129,14 @@ python sft.py --model gptneo --pretrain_model ./pretrain_model --save_param_path
 If you find our work useful, please consider citing the following paper:
 
 ```
-@article{li2023watermarking,
-  title={Watermarking LLMs with Weight Quantization},
-  author={Li, Linyang and Jiang, Botian and Wang, Pengyu and Ren, Ke and Yan, Hang and Qiu Xipeng},
-  journal={arXiv preprint arXiv:2310.xxx},
-  year={2023}
+@misc{li2023watermarking,
+      title={Watermarking LLMs with Weight Quantization}, 
+      author={Linyang Li and Botian Jiang and Pengyu Wang and Ke Ren and Hang Yan and Xipeng Qiu},
+      year={2023},
+      eprint={2310.11237},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
 }
-
 ```
 
 ## Contact Information
