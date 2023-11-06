@@ -1,0 +1,8 @@
+accelerate==0.20.3
+bitsandbytes==0.39.0
+datasets==2.12.0
+torch==1.13.1+cu117
+torchaudio==0.13.1+cu117
+torchvision==0.14.1+cu117
+tqdm==4.65.0
+transformers @ git+https://github.com/huggingface/transformers@62d71f4083acccca1c1c9b0eea68db69d9ef759a
